@@ -55,34 +55,23 @@ All experiments use: ImageNet-1K initialization · AdamW · Cosine LR decay · 3
 ## Repository Structure
 
 ```
-rice-convnext/
+ConvNeXt-Exploration/
 │
-├── 00_baseline_base.ipynb          # ConvNeXt-Base baseline
-├── 00_baseline_tiny.ipynb          # ConvNeXt-Tiny baseline
+├── RawSourceCode/
+│   ├── 01_ConvNeXt-Tiny | GELU | StochDepth | LayerNorm.ipynb
+│   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.ipynb
+│   ├── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.ipynb
+│   ├── 04_ConvNeXt-Tiny | GELU | Dropout | BatchNorm.ipynb
+│   ├── 05_ConvNeXt-Tiny | SiLU | StochDepth | LayerNorm.ipynb
+│   ├── 06_ConvNeXt-Tiny | SiLU | StochDepth | BatchNorm.ipynb
+│   ├── 07_ConvNeXt-Tiny | SiLU | Dropout | LayerNorm.ipynb
+│   └── 08_ConvNeXt-Tiny | SiLU | Dropout | BatchNorm.ipynb
 │
-├── ablation/
-│   ├── 01_GELU_StochDepth_LN.ipynb
-│   ├── 02_GELU_StochDepth_BN.ipynb
-│   ├── 03_GELU_StdDropout_LN.ipynb
-│   ├── 04_GELU_StdDropout_BN.ipynb
-│   ├── 05_SiLU_StochDepth_LN.ipynb
-│   ├── 06_SiLU_StochDepth_BN.ipynb
-│   ├── 07_SiLU_StdDropout_LN.ipynb
-│   └── 08_SiLU_StdDropout_BN.ipynb
-│
-├── results/
-│   ├── baseline_base/
-│   │   ├── confusion_matrix.png
-│   │   ├── training_curves.png
-│   │   ├── classification_report.csv
-│   │   └── summary.csv
-│   ├── baseline_tiny/
-│   │   ├── confusion_matrix.png
-│   │   ├── training_curves.png
-│   │   ├── classification_report.csv
-│   │   └── summary.csv
-│   └── ablation/
-│       └── (results per experiment)
+├── Output(html)/
+│   ├── 00_ConvNeXt-Base | GELU | StochDepth | Layernorm.html
+│   ├── 01_ConvNeXt-Tiny | GELU | StochDepth | LayerNorm.html
+│   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.html
+│   └── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.html
 │
 └── README.md
 ```
