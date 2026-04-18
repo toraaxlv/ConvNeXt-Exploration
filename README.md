@@ -42,13 +42,13 @@ All configurations use: ConvNeXt-Tiny · ImageNet-1K initialization · AdamW · 
 | 01 | GELU | Stochastic Depth | LayerNorm | 91.37% | 0.9133 |
 | 02 | GELU | Stochastic Depth | BatchNorm | 76.79% | 0.7666 |
 | 03 | GELU | Standard Dropout | LayerNorm | 89.43% | 0.8944 |
-| 04 | GELU | Standard Dropout | BatchNorm | — | — |
-| 05 | SiLU | Stochastic Depth | LayerNorm | — | — |
+| 04 | GELU | Standard Dropout | BatchNorm | 75.45% | 0.7533 |
+| 05 | SiLU | Stochastic Depth | LayerNorm | 69.64% | 0.6950 |
 | 06 | SiLU | Stochastic Depth | BatchNorm | — | — |
 | 07 | SiLU | Standard Dropout | LayerNorm | — | — |
 | 08 | SiLU | Standard Dropout | BatchNorm | — | — |
 
-*Experiments 04–08 in progress.*
+*Experiments 06–08 in progress.*
 
 ---
 
