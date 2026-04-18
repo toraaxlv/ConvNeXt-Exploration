@@ -1,13 +1,15 @@
 # ConvNeXt-Exploration
 ConvNeXt Architecture Exploration for Rice Leaf Disease Classification
 
-> Analyzing the effect of model size, activation function, and regularization strategy on ConvNeXt performance for rice leaf disease identification under data-constrained conditions.
+> Exploring 8 ConvNeXt-Tiny architectural configurations — varying activation function, regularization strategy, and normalization layer — to identify which combination performs best for rice leaf disease classification on a small-scale dataset.
 
 ---
 
 ## Overview
 
-This repository contains the implementation and experimental notebooks for an architectural analysis of ConvNeXt variants applied to rice leaf disease classification. The study systematically examines how model size, activation function (GELU vs SiLU), and regularization strategy (Stochastic Depth vs Standard Dropout) affect classification performance on a small-scale dataset of 3,353 images across 7 disease categories.
+This repository explores how architectural choices within ConvNeXt-Tiny affect classification performance on rice leaf disease data. Eight configurations are trained and evaluated under identical conditions, varying three components: activation function (GELU vs SiLU), regularization strategy (Stochastic Depth vs Standard Dropout), and normalization layer (LayerNorm vs BatchNorm). The goal is to find the best-performing combination across these variants.
+
+Dataset: 3,353 images across 7 disease categories.
 
 ---
 
@@ -33,16 +35,7 @@ Split: **60% train / 20% val / 20% test** (fixed seed = 42)
 
 ## Experiments
 
-### Baseline
-
-| Model | Activation | Regularization | Norm | Accuracy | F1-Score (weighted) |
-|---|---|---|---|---|---|
-| ConvNeXt-Base | GELU | Stochastic Depth | LayerNorm | **94.35%** | **0.9435** |
-| ConvNeXt-Tiny | GELU | Stochastic Depth | LayerNorm | 91.37% | 0.9133 |
-
-### Ablation Study (ConvNeXt-Tiny)
-
-All experiments use: ImageNet-1K initialization · AdamW · Cosine LR decay · 30 epochs · Batch size 64
+All configurations use: ConvNeXt-Tiny · ImageNet-1K initialization · AdamW · Cosine LR decay · 30 epochs · Batch size 64
 
 | # | Activation | Regularization | Norm | Accuracy | F1-Score (weighted) |
 |---|---|---|---|---|---|
