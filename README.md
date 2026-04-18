@@ -73,6 +73,12 @@ ConvNeXt-Exploration/
 │   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.html
 │   └── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.html
 │
+├── Output(pdf)/
+│   ├── 00_ConvNeXt-Base | GELU | StochDepth | Layernorm.pdf
+│   ├── 01_ConvNeXt-Tiny | GELU | StochDepth | LayerNorm.pdf
+│   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.pdf
+│   └── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.pdf
+│
 └── README.md
 ```
 
