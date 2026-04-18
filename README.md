@@ -33,22 +33,29 @@ Split: **60% train / 20% val / 20% test** (fixed seed = 42)
 
 ## Experiments
 
+### Baseline
+
+| Model | Activation | Regularization | Norm | Accuracy | F1-Score (weighted) |
+|---|---|---|---|---|---|
+| ConvNeXt-Base | GELU | Stochastic Depth | LayerNorm | **94.35%** | **0.9435** |
+| ConvNeXt-Tiny | GELU | Stochastic Depth | LayerNorm | 91.37% | 0.9133 |
+
 ### Ablation Study (ConvNeXt-Tiny)
 
 All experiments use: ImageNet-1K initialization · AdamW · Cosine LR decay · 30 epochs · Batch size 64
 
-| # | Activation | Dropout | Norm | Accuracy | F1-Score |
+| # | Activation | Regularization | Norm | Accuracy | F1-Score (weighted) |
 |---|---|---|---|---|---|
-| 01 | GELU | Stochastic Depth | LayerNorm | — | — |
-| 02 | GELU | Stochastic Depth | BatchNorm | — | — |
-| 03 | GELU | Standard Dropout | LayerNorm | — | — |
+| 01 | GELU | Stochastic Depth | LayerNorm | 91.37% | 0.9133 |
+| 02 | GELU | Stochastic Depth | BatchNorm | 76.79% | 0.7666 |
+| 03 | GELU | Standard Dropout | LayerNorm | 89.43% | 0.8944 |
 | 04 | GELU | Standard Dropout | BatchNorm | — | — |
 | 05 | SiLU | Stochastic Depth | LayerNorm | — | — |
 | 06 | SiLU | Stochastic Depth | BatchNorm | — | — |
 | 07 | SiLU | Standard Dropout | LayerNorm | — | — |
 | 08 | SiLU | Standard Dropout | BatchNorm | — | — |
 
-*Results will be updated as experiments complete.*
+*Experiments 04–08 in progress.*
 
 ---
 
