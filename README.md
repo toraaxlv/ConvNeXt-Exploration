@@ -50,6 +50,28 @@ All configurations use: ConvNeXt-Tiny · ImageNet-1K initialization · AdamW · 
 
 ---
 
+## Key Findings
+
+**1. LayerNorm is the most critical component**
+Replacing LN with BatchNorm consistently caused ~14% accuracy drop across all GELU configurations, confirming that BatchNorm is fundamentally incompatible with ConvNeXt's architecture.
+
+**2. Activation function matters more than expected**
+All GELU configs (75–91%) outperformed all SiLU configs (64–76%). Even GELU's worst config (75.45%) beats SiLU's best (69.64% with LN, 76.79% with BN). This is likely because pretrained ImageNet-1K weights are optimized for GELU — swapping the activation disrupts the learned feature representations.
+
+**3. SiLU + BatchNorm anomaly**
+Unlike GELU configs where LN always outperforms BN, SiLU configs show the opposite — BN outperforms LN. This suggests that under SiLU, the combination of normalization and activation creates a different optimization dynamic, possibly acting as a stronger regularizer on the small dataset.
+
+**4. Regularization strategy has minor but consistent effect**
+Stochastic Depth consistently outperforms Standard Dropout by 1–5% across matching configs, but it is not the dominant factor.
+
+**5. Best and worst configurations**
+- **Best:** Config 01 — GELU + Stochastic Depth + LayerNorm (91.37%) — original ConvNeXt design, all modern components intact
+- **Worst:** Config 07 — SiLU + Standard Dropout + LayerNorm (64.88%) — two components replaced simultaneously, degradation compounds
+
+**Overall conclusion:** The modern components of ConvNeXt (GELU, Stochastic Depth, LayerNorm) are co-designed and interdependent. Replacing any single component degrades performance significantly, and replacing multiple compounds the effect. Architectural integrity must be preserved for optimal performance, especially under transfer learning from pretrained weights.
+
+---
+
 ## Repository Structure
 
 ```
@@ -69,13 +91,23 @@ ConvNeXt-Exploration/
 │   ├── 00_ConvNeXt-Base | GELU | StochDepth | Layernorm.html
 │   ├── 01_ConvNeXt-Tiny | GELU | StochDepth | LayerNorm.html
 │   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.html
-│   └── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.html
+│   ├── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.html
+│   ├── 04_ConvNeXt-Tiny | GELU | Dropout | BatchNorm.html
+│   ├── 05_ConvNeXt-Tiny | SiLU | StochDepth | LayerNorm.html
+│   ├── 06_ConvNeXt-Tiny | SiLU | StochDepth | BatchNorm.html
+│   ├── 07_ConvNeXt-Tiny | SiLU | Dropout | LayerNorm.html
+│   └── 08_ConvNeXt-Tiny | SiLU | Dropout | BatchNorm.html
 │
 ├── Output(pdf)/
 │   ├── 00_ConvNeXt-Base | GELU | StochDepth | Layernorm.pdf
 │   ├── 01_ConvNeXt-Tiny | GELU | StochDepth | LayerNorm.pdf
 │   ├── 02_ConvNeXt-Tiny | GELU | StochDepth | BatchNorm.pdf
-│   └── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.pdf
+│   ├── 03_ConvNeXt-Tiny | GELU | Dropout | LayerNorm.pdf
+│   ├── 04_ConvNeXt-Tiny | GELU | Dropout | BatchNorm.pdf
+│   ├── 05_ConvNeXt-Tiny | SiLU | StochDepth | LayerNorm.pdf
+│   ├── 06_ConvNeXt-Tiny | SiLU | StochDepth | BatchNorm.pdf
+│   ├── 07_ConvNeXt-Tiny | SiLU | Dropout | LayerNorm.pdf
+│   └── 08_ConvNeXt-Tiny | SiLU | Dropout | BatchNorm.pdf
 │
 └── README.md
 ```
