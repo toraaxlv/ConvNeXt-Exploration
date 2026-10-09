@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/poster.png" alt="Research poster — ConvNeXt Architecture Exploration for Rice Leaf Disease Classification" width="100%">
+</p>
+
 # ConvNeXt-Exploration
 ConvNeXt Architectural Component Sensitivity Analysis for Rice Leaf Disease Classification
 
