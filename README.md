@@ -48,6 +48,10 @@ All configurations: ConvNeXt-Tiny · ImageNet-1K pretrained · AdamW · Cosine L
 | 07 | SiLU | Standard Dropout | LayerNorm | 64.88% | 0.6405 |
 | 08 | SiLU | Standard Dropout | BatchNorm | 75.89% | 0.7586 |
 
+![Results — 8 configurations](docs/images/results-table.png)
+
+*Color-coded summary of the 8 configurations — best (GELU + Stoch. Depth + LN) in green, worst (SiLU + Dropout + LN) in red.*
+
 ---
 
 ## Experiment 09: From-Scratch Disentanglement
@@ -62,6 +66,14 @@ To determine whether the LN vs BN gap in Exp 01–08 is caused by pretrained wei
 | 09d | BatchNorm | 3×3 | — | — |
 
 > Results to be filled after experiment run.
+
+![Exp 09 — LN vs BN, pretrained vs from scratch](docs/images/exp09-ln-vs-bn.png)
+
+*Test accuracy across the four from-scratch configurations, contrasted with pretrained baselines (Exp 01/02) and kernel size ablation.*
+
+![Exp 09 — confusion matrices](docs/images/exp09-confusion-matrices.png)
+
+*Per-class confusion matrices for the four from-scratch configurations (09a–09d).*
 
 ---
 
@@ -113,6 +125,9 @@ ConvNeXt-Exploration/
 │   ├── 01_ConvNeXt-Tiny | ...pdf
 │   ├── ...
 │   └── 09_ConvNeXt_Tiny___Scratch_Experiment_LN_vs_BN_on_7x7_and_3x3.pdf
+│
+├── docs/
+│   └── images/                            # Figures for README
 │
 └── README.md
 ```
